@@ -3,6 +3,9 @@ import argentBankLogo from '../img/argentBankLogo.png'
 import iconChat from '../img/icon-chat.png'
 import iconMoney from '../img/icon-money.png'
 import iconSecurity from '../img/icon-security.png'
+import LogoutButton from "./LogoutButton";
+
+import NameButton from './NameButton'
 
 const Home = () => (
   <>
@@ -16,10 +19,8 @@ const Home = () => (
         <h1 className="sr-only">Argent Bank</h1>
       </a>
       <div>
-        <a className="main-nav-item" href="./login">
-          <i className="fa fa-user-circle" />
-          Sign In
-        </a>
+        <NameButton/>
+        <LogoutButton/>
       </div>
     </nav>
     <main>

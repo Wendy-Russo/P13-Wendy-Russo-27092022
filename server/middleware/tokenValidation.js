@@ -5,8 +5,9 @@ module.exports.validateToken = (req, res, next) => {
   let response = {}
 
   try {
+
     if (!req.headers.authorization) {
-      throw new Error('Token is missing from header')
+      throw new Error('Token is missings  from header', req)
     }
 
     const userToken = req.headers.authorization.split('Bearer')[1].trim()

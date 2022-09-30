@@ -58,6 +58,8 @@ module.exports.loginUser = async serviceData => {
       throw new Error('Password is invalid')
     }
 
+    console.log(serviceData.password, user.password)
+
     const token = jwt.sign(
       { id: user._id },
       process.env.SECRET_KEY || 'default-secret-key',
