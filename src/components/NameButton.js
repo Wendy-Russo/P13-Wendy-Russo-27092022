@@ -33,15 +33,15 @@ function NameButton(){
   });
 
   return(
-    
+
     <>
       {isLoggedIn ? (
-        <a className="main-nav-item" href="./user">
-          <i className="fa fa-user-circle" />
+        <a className="main-nav-item me-3" href="./user">
+          <i className="fa fa-user-circle me-1" />
           {firstName}
         </a>) :
         (<a className="main-nav-item" href="./login">
-          <i className="fa fa-user-circle" />
+          <i className="fa fa-user-circle me-1" />
           Sign In
         </a>)
       }  

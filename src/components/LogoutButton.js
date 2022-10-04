@@ -17,8 +17,8 @@ function LogoutButton(){
   }, [DISPATCH]);
 
   return(
-    isLoggedIn &&(<a className="main-nav-item" href="./" onClick={logOut}>
-      <i className="fa fa-sign-out"/>
+    isLoggedIn &&(<a className="main-nav-item " href="./" onClick={logOut}>
+      <i className="fa fa-sign-out me-1"/>
       Log Out
     </a>)
   )

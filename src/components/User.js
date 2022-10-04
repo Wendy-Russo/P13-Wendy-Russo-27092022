@@ -98,9 +98,9 @@ function User(){
           <LogoutButton/>
         </div>
       </nav>
-      <main className="main bg-dark">
+      <main className="main bg-dark py-5">
         <div className="header">
-          <h1>
+          <h1 className="">
             Welcome back
             <br />
             {firstName + ' ' + lastName}
@@ -108,7 +108,7 @@ function User(){
 
           <div className="dropdown-center ">
             <button type="button" className=" dropdown-toggle edit-button rounded" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="false">
-              Dropdown form
+              Edit Profile
             </button>
             <Formik
               initialValues={initialValues}
@@ -119,20 +119,21 @@ function User(){
 
                 <Form >
                   <div className="mb-3">
-                      <label htmlFor="firstName" className="form-label">
+                      <label htmlFor="firstName" className="form-label text-center">
                         First Name
                       </label>
-                      <Field name="firstName" id="firstName" className="rounded form-control" />
+                      <Field name="firstName" id="firstName" className="rounded-pill form-control mb-2 shadow-sm" />
                       <ErrorMessage name="firstName" component="div" className='alert alert-danger' />
                   </div>
+                  <hr className="dropdown-divider mb-2"></hr>
                   <div className="mb-3">
                       <label htmlFor="lastName" className="form-label">
                         Last Name
                       </label>
-                      <Field name="lastName" id="lastName" className="rounded form-control" />
+                      <Field name="lastName" id="lastName" className="rounded-pill form-control mb-2 shadow-sm" />
                       <ErrorMessage name="lastName" component="div" className='alert alert-danger' />
                   </div>
-                  <button type="submit"  className="sign-in-button rounded" >  
+                  <button type="submit"  className="sign-in-button rounded shadow-sm" >  
                     <span>Update Profile</span>
                   </button>
                 </Form>
@@ -142,34 +143,34 @@ function User(){
 
         </div>
         <h2 className="sr-only">Accounts</h2>
-        <section className="account rounded">
+        <section className="account rounded shadow">
           <div className="account-content-wrapper">
             <h3 className="account-title">Argent Bank Checking (x8349)</h3>
             <p className="account-amount">$2,082.79</p>
             <p className="account-amount-description">Available Balance</p>
           </div>
           <div className="account-content-wrapper cta">
-            <button className="transaction-button rounded">View transactions</button>
+            <button className="transaction-button rounded shadow-sm">View transactions</button>
           </div>
         </section>
-        <section className="account rounded">
+        <section className="account rounded shadow">
           <div className="account-content-wrapper">
             <h3 className="account-title">Argent Bank Savings (x6712)</h3>
             <p className="account-amount">$10,928.42</p>
             <p className="account-amount-description">Available Balance</p>
           </div>
           <div className="account-content-wrapper cta">
-            <button className="transaction-button rounded">View transactions</button>
+            <button className="transaction-button rounded shadow-sm">View transactions</button>
           </div>
         </section>
-        <section className="account rounded">
+        <section className="account rounded shadow">
           <div className="account-content-wrapper">
             <h3 className="account-title">Argent Bank Credit Card (x8349)</h3>
             <p className="account-amount">$184.30</p>
             <p className="account-amount-description">Current Balance</p>
           </div>
           <div className="account-content-wrapper cta">
-            <button className="transaction-button rounded">View transactions</button>
+            <button className="transaction-button rounded shadow-sm">View transactions</button>
           </div>
         </section>
       </main>

@@ -110,6 +110,144 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /transactions:
+    post :
+      security:
+        - Bearer: []
+      tags: 
+        - Transaction Module
+      summary: Transactions List Read API
+      description: API for listing the current month's transactions
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transactions list retrieved successully
+          schema:
+            $ref: '#/definitions/Transactions'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /transactions/{id}:
+    post :
+      security:
+        - Bearer: []
+      tags: 
+        - Transaction Module
+      summary: Transaction Read API
+      description: API for reading and searching a specific transaction by it's ID
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction retrieved successully
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /transactions/{id}/create:
+    put :
+      security:
+        - Bearer: []
+      tags: 
+        - Transaction Module
+      summary: Transaction Create API
+      description: API for creating a new detail for a specific transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - in: body
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionCreate'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transactions detail added successully
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /transactions/{id}/update:
+    put :
+      security:
+        - Bearer: []
+      tags: 
+        - Transaction Module
+      summary: Transaction Update API
+      description: API for updating a detail for a specific transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - in: body
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionCreate'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transactions detail added successully
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /transactions/{id}/delete: 
+    delete :
+      security:
+        - Bearer: []
+      tags: 
+        - Transaction Module
+      summary: Transaction Delete API
+      description: API for deleting a detail for a specific transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - in: body
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionDelete'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transactions detail deleted successully
+          schema:
+            $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -163,4 +301,49 @@ definitions:
       firstName:
         type: string
       lastName:
+        type: string
+  TransactionsList:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: object
+        properties:
+          transactions:
+            type: object
+  Transaction:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: object
+        properties:
+          Id:
+            type: string
+          Date:
+            type: string
+          Detail1:
+            type: string
+          Detail2:
+            type: string
+  TransactionCreate:
+    type: object
+    properties:
+      detailToAdd:
+        type: string
+  TransactionUpdate:
+    type: object
+    properties:
+      detailToUpdate:
+        type: string
+  TransactionDelete:
+    type: object
+    properties:
+      detailToDelete:
         type: string

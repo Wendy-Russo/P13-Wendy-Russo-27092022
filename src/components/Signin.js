@@ -94,7 +94,7 @@ const Signin = () => {
                     <label htmlFor="username">
                       Username
                     </label>
-                    <Field type="text" name="username" id="username"/>
+                    <Field type="text" name="username" id="username" className="rounded-pill mb-2 ps-3"/>
                     <ErrorMessage name="username" component="div" className='alert alert-danger' />
                   </div>
 
@@ -102,7 +102,7 @@ const Signin = () => {
                     <label htmlFor="password">
                       Password
                     </label>
-                    <Field type="text" id="password" name="password"/>
+                    <Field type="text" id="password" name="password" className="rounded-pill mb-2 ps-3"/>
                     <ErrorMessage name="password" component="div" className='alert alert-danger' />
                   </div>
 

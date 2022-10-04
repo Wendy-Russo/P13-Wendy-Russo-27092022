@@ -12,7 +12,7 @@ const Home = () => (
     <nav className="main-nav">
       <a className="main-nav-logo" href="/">
         <img
-          className="main-nav-logo-image"
+          className="main-nav-logo-image "
           src={argentBankLogo}
           alt="Argent Bank Logo"
         />
@@ -25,7 +25,7 @@ const Home = () => (
     </nav>
     <main>
       <div className="hero">
-        <section className="hero-content">
+        <section className="hero-content rounded shadow ">
           <h2 className="sr-only">Promoted Content</h2>
           <p className="subtitle">No fees.</p>
           <p className="subtitle">No minimum deposit.</p>
@@ -34,12 +34,13 @@ const Home = () => (
         </section>
       </div>
       <section className="features">
+        <hr></hr>
         <h2 className="sr-only">Features</h2>
-        <div className="feature-item">
+        <div className="feature-item my-5">
           <img
             src={iconChat}
             alt="Chat Icon"
-            className="feature-icon"
+            className="feature-icon shadow mb-4"
           />
           <h3 className="feature-item-title">You are our #1 priority</h3>
           <p>
@@ -47,11 +48,11 @@ const Home = () => (
             24/7 chat or through a phone call in less than 5 minutes.
           </p>
         </div>
-        <div className="feature-item">
+        <div className="feature-item my-5">
           <img
             src={iconMoney}
             alt="Chat Icon"
-            className="feature-icon"
+            className="feature-icon shadow mb-4"
           />
           <h3 className="feature-item-title">
             More savings means higher rates
@@ -60,11 +61,11 @@ const Home = () => (
             The more you save with us, the higher your interest rate will be!
           </p>
         </div>
-        <div className="feature-item">
+        <div className="feature-item my-5">
           <img
             src={iconSecurity}
             alt="Chat Icon"
-            className="feature-icon"
+            className="feature-icon shadow mb-4"
           />
           <h3 className="feature-item-title">Security you can trust</h3>
           <p>
