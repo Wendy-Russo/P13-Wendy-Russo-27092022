@@ -111,7 +111,7 @@ paths:
         '500':
           description: Internal Server Error
   /transactions:
-    post :
+    get :
       security:
         - Bearer: []
       tags: 
@@ -129,13 +129,13 @@ paths:
         '200':
           description: Transactions list retrieved successully
           schema:
-            $ref: '#/definitions/Transactions'
+            $ref: '#/definitions/TransactionsList'
         '400':
           description: Invalid Fields
         '500':
           description: Internal Server Error
   /transactions/{id}:
-    post :
+    get :
       security:
         - Bearer: []
       tags: 
@@ -159,7 +159,7 @@ paths:
         '500':
           description: Internal Server Error
   /transactions/{id}/create:
-    put :
+    post :
       security:
         - Bearer: []
       tags: 
@@ -206,7 +206,7 @@ paths:
           description: Update user profile attributes
           required: true
           schema:
-            $ref: '#/definitions/TransactionCreate'
+            $ref: '#/definitions/TransactionUpdate'
       produces:
         - application/json
       responses:
@@ -310,10 +310,18 @@ definitions:
       message:
         type: string
       body:
-        type: object
-        properties:
-          transactions:
-            type: object
+        type: array
+        items:
+          type: object
+          properties:
+            Id:
+              type: string
+            Date:
+              type: string
+            Category:
+              type: string
+            Notes:
+              type: string
   Transaction:
     type: object
     properties:
@@ -328,9 +336,9 @@ definitions:
             type: string
           Date:
             type: string
-          Detail1:
+          Category:
             type: string
-          Detail2:
+          Notes:
             type: string
   TransactionCreate:
     type: object

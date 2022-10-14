@@ -106,38 +106,32 @@ function User(){
             {firstName + ' ' + lastName}
           </h1>
 
-          <div className="dropdown-center ">
-            <button type="button" className=" dropdown-toggle edit-button rounded" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="false">
-              Edit Profile
-            </button>
+          <div className="dropdown-center d-flex justify-content-center">
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={_updateProfile}
             >
-              <div className="dropdown-menu p-3 shadow border border-success">
-
-                <Form >
-                  <div className="mb-3">
-                      <label htmlFor="firstName" className="form-label text-center">
-                        First Name
-                      </label>
-                      <Field name="firstName" id="firstName" className="rounded-pill form-control mb-2 shadow-sm" />
+              <Form className="update-form d-flex flex-wrap justify-content-center w-50" >
+                <div className="d-md-flex w-100 justify-content-center">
+                  <div className="mb-3 mx-2 ">
+                      <Field name="firstName" placeholder={firstName} id="firstName" className="rounded-pill form-control mb-2 shadow-sm" />
                       <ErrorMessage name="firstName" component="div" className='alert alert-danger' />
                   </div>
-                  <hr className="dropdown-divider mb-2"></hr>
-                  <div className="mb-3">
-                      <label htmlFor="lastName" className="form-label">
-                        Last Name
-                      </label>
-                      <Field name="lastName" id="lastName" className="rounded-pill form-control mb-2 shadow-sm" />
+                  <div className="mb-3 mx-2">
+                      <Field name="lastName" placeholder={lastName} id="lastName" className="rounded-pill form-control mb-2 shadow-sm" />
                       <ErrorMessage name="lastName" component="div" className='alert alert-danger' />
                   </div>
-                  <button type="submit"  className="sign-in-button rounded shadow-sm" >  
+                </div>
+                <div className="d-md-flex w-100 justify-content-center">
+                  <button type="submit"  className="sign-in-button rounded shadow-sm mx-2" >  
                     <span>Update Profile</span>
                   </button>
-                </Form>
-              </div >
+                  <button type="reset"  className="sign-in-button rounded shadow-sm mx-2" >  
+                    <span>Cancel</span>
+                  </button>
+                </div>
+              </Form>
             </Formik>
           </div>
 

@@ -262,6 +262,9 @@ body {
   flex: 1;
 }
 
+.update-form{
+}
+
 .edit-button {
   border-color: #00bc77;
   background-color: #00bc77;
