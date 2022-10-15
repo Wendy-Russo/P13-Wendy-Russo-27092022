@@ -30,27 +30,25 @@ function User(){
   const _updateProfile = (formValue) => {
 
     const NEW_NAME = { firstName : (formValue.firstName || firstName) , lastName : (formValue.lastName || lastName)};
-    //const { firstName, lastName } = formValue;
-
-    console.log({...NEW_NAME,currentUser})
 
     setSuccessFull(false);
 
     DISPATCH(updateProfile({...NEW_NAME,currentUser}))
       .unwrap()
       .then((response) => {
-        //console.log(response.user.body)
+
         setSuccessFull(true);
         setFirstName(response.user.body.firstName)
         setLastName(response.user.body.lastName)
       })
       .catch(() => {
+
         setSuccessFull(false);
       });
   }
 
   useEffect(() => {
-    //console.log(currentUser.body.token)
+
     AuthService.getUserProfile(currentUser).then(
       (response) => {
         setContent(response.data);
@@ -68,15 +66,6 @@ function User(){
         setContent(_content);
       }
     );
-
-    /*EventBus.on("logout", () => {
-      logOut();
-    });
-
-    return () => {
-      EventBus.remove("logout");
-    };*/
-
   }, [])
 
   if (!currentUser) {

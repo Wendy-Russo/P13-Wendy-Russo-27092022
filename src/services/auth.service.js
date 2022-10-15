@@ -14,7 +14,7 @@ const login = (username, password) => {
 }
 
 const updateProfile = (firstName, lastName,currentUser) => {
-  //console.log("service",currentUser.body.token)
+
   return axios
     .put(BASE_URL + "/user/profile", {
       firstName : firstName,

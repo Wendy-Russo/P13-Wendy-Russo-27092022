@@ -37,7 +37,7 @@ export const logout = createAsyncThunk(
 export const updateProfile = createAsyncThunk(
   "auth/updateProfile",
   async ({ firstName, lastName, currentUser }, thunkAPI) => {
-    //console.log("slice",currentUser.body.token)
+
     try {
       const data = await AuthService.updateProfile(firstName, lastName,currentUser);
       return { user: data };
@@ -58,8 +58,6 @@ const initialState = user
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
 
-//const initialState =  { isLoggedIn: false, user: null };
-
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -73,7 +71,6 @@ const authSlice = createSlice({
       state.user = null;
     },
     [logout.fulfilled]: (state, action) => {
-      console.log("logout.fulfilled")
       state.isLoggedIn = false;
       state.user = null;
     },

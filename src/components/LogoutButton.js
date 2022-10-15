@@ -9,7 +9,7 @@ function LogoutButton(){
   const DISPATCH = useDispatch();
 
   const logOut = useCallback(() => {
-    console.log(1)
+
     DISPATCH(logout());
   }, [DISPATCH]);
 
