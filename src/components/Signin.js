@@ -44,8 +44,7 @@ const Signin = () => {
     dispatch(login({username,password}))
       .unwrap()
       .then(() => {
-        Navigate("/profile");
-        window.location.reload();
+        Navigate("/user");
       })
       .catch(() => {
         setLoading(false);

@@ -10,6 +10,9 @@ export const login = createAsyncThunk(
   async ({ username, password }, thunkAPI) => {
     try {
       const data = await AuthService.login(username, password);
+      if (data.body.token) {
+        localStorage.setItem("user", JSON.stringify(data));
+      }
       return { user: data };
     } catch (error) {
       const message =
@@ -33,9 +36,10 @@ export const logout = createAsyncThunk(
 
 export const updateProfile = createAsyncThunk(
   "auth/updateProfile",
-  async ({ firstName, lastName }, thunkAPI) => {
+  async ({ firstName, lastName, currentUser }, thunkAPI) => {
+    //console.log("slice",currentUser.body.token)
     try {
-      const data = await AuthService.updateProfile(firstName, lastName);
+      const data = await AuthService.updateProfile(firstName, lastName,currentUser);
       return { user: data };
     } catch (error) {
       const message =
@@ -54,6 +58,8 @@ const initialState = user
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
 
+//const initialState =  { isLoggedIn: false, user: null };
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -67,14 +73,15 @@ const authSlice = createSlice({
       state.user = null;
     },
     [logout.fulfilled]: (state, action) => {
+      console.log("logout.fulfilled")
       state.isLoggedIn = false;
       state.user = null;
     },
     [updateProfile.fulfilled]: (state, action) => {
-      state.isLoggedIn = false;
+      state.isLoggedIn = true;
     },
     [updateProfile.rejected]: (state, action) => {
-      state.isLoggedIn = false;
+      state.isLoggedIn = true;
     },
   },
 });

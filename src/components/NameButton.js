@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import UserService from "../services/user.service";
+import AuthService from "../services/auth.service";
 import { useState, useEffect} from "react"
 
 function NameButton(){
@@ -7,12 +7,13 @@ function NameButton(){
   const { isLoggedIn } = useSelector((state) => state.auth);
   const [firstName, setFirstName] = useState("");
   const [content, setContent] = useState("");
+  const {user : currentUser} = useSelector((state) => state.auth);
 
 
   useEffect(() => {
 
     if(isLoggedIn){
-      UserService.getUserProfile().then(
+      AuthService.getUserProfile(currentUser).then(
         (response) => {
           setContent(response.data);
           setFirstName(response.data.body.firstName);

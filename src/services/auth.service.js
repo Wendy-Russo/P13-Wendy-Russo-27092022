@@ -9,28 +9,20 @@ const login = (username, password) => {
       password : password,
     })
     .then((response) => {
-      if (response.data.body.token) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
-
       return response.data;
     });
 }
 
-const updateProfile = (firstName, lastName) => {
+const updateProfile = (firstName, lastName,currentUser) => {
+  //console.log("service",currentUser.body.token)
   return axios
     .put(BASE_URL + "/user/profile", {
       firstName : firstName,
       lastName : lastName,
     },
-    {
-      headers : authHeader(),
-    })
+    { headers : authHeader(currentUser)}
+    )
     .then((response) => {
-      if (response.data.body.token) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
-
       return response.data;
     });
 }
@@ -39,10 +31,15 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
+const getUserProfile = (user) => {
+  return axios.post( BASE_URL + "/user/profile" , "",{headers: authHeader(user) });
+}
+
 const authService = {
   login,
   logout,
   updateProfile,
+  getUserProfile,
 }
 
 export default authService;

@@ -1,7 +1,7 @@
 import React, { state, useState, useEffect, useCallback } from "react";
 import { Navigate } from 'react-router-dom';
 import {useDispatch, useSelector } from "react-redux";
-import UserService from "../services/user.service";
+import AuthService from "../services/auth.service";
 import { updateProfile } from "../slices/auth";
 
 import argentBankLogo from '../img/argentBankLogo.png'
@@ -27,22 +27,22 @@ function User(){
     lastName  : "",
   };
 
-  const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required("This field is required!"),
-    lastName: Yup.string().required("This field is required!"),
-  });
-
   const _updateProfile = (formValue) => {
-    console.log("0")
 
-    const { firstName, lastName } = formValue;
+    const NEW_NAME = { firstName : (formValue.firstName || firstName) , lastName : (formValue.lastName || lastName)};
+    //const { firstName, lastName } = formValue;
+
+    console.log({...NEW_NAME,currentUser})
+
     setSuccessFull(false);
 
-    DISPATCH(updateProfile({firstName,lastName}))
+    DISPATCH(updateProfile({...NEW_NAME,currentUser}))
       .unwrap()
-      .then(() => {
+      .then((response) => {
+        //console.log(response.user.body)
         setSuccessFull(true);
-        window.location.reload();
+        setFirstName(response.user.body.firstName)
+        setLastName(response.user.body.lastName)
       })
       .catch(() => {
         setSuccessFull(false);
@@ -50,7 +50,8 @@ function User(){
   }
 
   useEffect(() => {
-    UserService.getUserProfile().then(
+    //console.log(currentUser.body.token)
+    AuthService.getUserProfile(currentUser).then(
       (response) => {
         setContent(response.data);
         setFirstName(response.data.body.firstName)
@@ -109,7 +110,6 @@ function User(){
           <div className="dropdown-center d-flex justify-content-center">
             <Formik
               initialValues={initialValues}
-              validationSchema={validationSchema}
               onSubmit={_updateProfile}
             >
               <Form className="update-form d-flex flex-wrap justify-content-center w-50" >

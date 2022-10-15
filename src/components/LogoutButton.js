@@ -8,16 +8,13 @@ function LogoutButton(){
 
   const DISPATCH = useDispatch();
 
-
-  console.log(isLoggedIn)
-
   const logOut = useCallback(() => {
     console.log(1)
     DISPATCH(logout());
   }, [DISPATCH]);
 
   return(
-    isLoggedIn &&(<a className="main-nav-item " href="./" onClick={logOut}>
+    isLoggedIn &&(<a className="main-nav-item " href="./login" onClick={logOut}>
       <i className="fa fa-sign-out me-1"/>
       Log Out
     </a>)
